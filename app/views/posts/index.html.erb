@@ -1,0 +1,10 @@
+<% @posts.each do |post| %>
+  <%=post.content%>
+<% end %>
+
+
+<% Post.all.each do |post| %>
+  <p><%= post.user.fname + " " + post.user.lname %></p>
+  <p><%= post.content %></p>
+  <p><%= post.created_at.strftime('%m-%d-%Y %I:%M:%S %P') %></p>
+<% end %>
