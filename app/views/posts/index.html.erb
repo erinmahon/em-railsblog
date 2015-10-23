@@ -1,5 +1,5 @@
 <% @posts.each do |post| %>
-  <%=post.content%>
+  <p><%=post.content%></p>
 <% end %>
 
 
@@ -8,3 +8,19 @@
   <p><%= post.content %></p>
   <p><%= post.created_at.strftime('%m-%d-%Y %I:%M:%S %P') %></p>
 <% end %>
+
+<table border="1">
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.content %></td>
+        <td><a href="/posts/<%= post.id %>">Show</a></td>
+        <td>Edit</td>
+        <td><%= link_to("Delete", post_path(post.id), method: :delete, data: {confirm: "Are you sure you want to delete this post?"})%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+	<% end %>
