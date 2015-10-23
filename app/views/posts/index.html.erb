@@ -15,7 +15,7 @@
       <tr>
         <td><%= post.content %></td>
         <td><a href="/posts/<%= post.id %>">Show</a></td>
-        <td>Edit</td>
+        <td><%= link_to 'Edit', edit_post_path(post.id) %></td>
         <td><%= link_to("Delete", post_path(post.id), method: :delete, data: {confirm: "Are you sure you want to delete this post?"})%></td>
       </tr>
     <% end %>
@@ -24,3 +24,4 @@
 <% if flash[:notice] %>
 	<%= flash[:notice] %>
 	<% end %>
+	<%= link_to 'New Post', new_post_path %>
