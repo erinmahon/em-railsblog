@@ -1,15 +1,16 @@
-<% @posts.each do |post| %>
-  <p><%=post.content%></p>
-<% end %>
-
-
-<% Post.all.each do |post| %>
-  <p><%= post.user.fname + " " + post.user.lname %></p>
+<% Post.all.reverse.each do |post| %>
+  <p><a href="/users/<%= post.user.id %>"><%= post.user.fname + " " + post.user.lname %></a>:</p>
   <p><%= post.content %></p>
   <p><%= post.created_at.strftime('%m-%d-%Y %I:%M:%S %P') %></p>
+<!--   <p><a href="/posts/<%= post.id %>">Show</a>
+  	&#160-&#160
+  	<%= link_to 'Edit', edit_post_path(post.id) %>
+  	&#160-&#160
+  	<%= link_to("Delete", post_path(post.id), method: :delete, data: {confirm: "Are you sure you want to delete this post?"})%>
+  </p> -->
 <% end %>
 
-<table border="1">
+<!-- <table border="1">
   <tbody>
     <% @posts.each do |post| %>
       <tr>
@@ -20,7 +21,7 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
 <% if flash[:notice] %>
 	<%= flash[:notice] %>
 	<% end %>
